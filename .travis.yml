@@ -26,7 +26,6 @@ matrix:
       env: WP_VERSION=latest
 before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - composer install --no-dev
   - |
     if [ -f ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ]; then
       phpenv config-rm xdebug.ini
@@ -45,6 +44,8 @@ before_script:
     fi
 
 script:
+  - composer install --no-dev
+  - composer dump-autoload -o
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
       phpunit

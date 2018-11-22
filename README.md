@@ -24,7 +24,7 @@ or download installable.zip from [release](https://github.com/anigrab/wp-anigrab
 
 place this shortcode-like anywhere in your post  [anigrab=**id**]**template**[/anigrab] or [mangrab=**id**]**template**[/mangrab]
 
--  **id:** myanimelist anime id
+-  **id:** myanimelist anime/manga id
 
 -  **template:** use  **dump** for auto parse or template engine syntax, e.g
 ```
@@ -47,7 +47,7 @@ etc
 
 ### TO DO
 
-[] implement [imposter](https://github.com/TypistTech/imposter)
+- [ ] implement [imposter](https://github.com/TypistTech/imposter)
 
-[] add more features
+- [ ] add more features
 
