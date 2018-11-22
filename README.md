@@ -12,7 +12,7 @@
 
 in terminal, run this command
 ```
-$ composer create-project grei/wp-anigrab path-to-wp-plugins/wp-anigrab
+$ composer create-project grei/wp-anigrab path-to-wp-plugins/wp-anigrab --no-dev
 $ cd path-to-wp-plugins/wp-anigrab && composer dump-autoload -o
 $ wp plugin activate wp-anigrab
 
@@ -22,7 +22,7 @@ or download installable.zip from [release](https://github.com/anigrab/wp-anigrab
 
 ### Usage
 
-place this shortcode-like anywhere in your post  [anigrab=**id**]**template**[/anigrab] or [mangrab=**id**]**template[/mangrab]
+place this shortcode-like anywhere in your post  [anigrab=**id**]**template**[/anigrab] or [mangrab=**id**]**template**[/mangrab]
 
 -  **id:** myanimelist anime id
 
@@ -47,7 +47,7 @@ etc
 
 ### TO DO
 
-[ ] implement [imposter](https://github.com/TypistTech/imposter)
+[] implement [imposter](https://github.com/TypistTech/imposter)
 
-[ ] add more features
+[] add more features
 
