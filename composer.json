@@ -1,0 +1,27 @@
+{
+    "name": "grei/wp-anigrab",
+    "description": "grab anime info and save to local wordpress post",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "grei",
+            "email": "grei@tuta.io"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "jikan-me/jikan": "~1.0",
+        "mustache/mustache": "^2.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Grei\\": "src/"
+        }
+    },
+    "require-dev": {
+        "johnpbloch/wordpress": "^4.9",
+        "wp-phpunit/wp-phpunit": "^4.9"
+    }
+}
