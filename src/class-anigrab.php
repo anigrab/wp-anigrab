@@ -18,14 +18,14 @@ class Anigrab {
 	public $validate;
 	public $tag;
 
-	public function __construct( String $data ) {
+	public function __construct( string $data ) {
 		if ( preg_match( '`\[(anigrab|mangrab)=(\d+)\]((.|\n)*)\[/\1\]`', $data, $matches ) ) {
 			list($tag, $type, $id, $content, $ig) = $matches;
-			$this->type     = $type;
-			$this->validate = true;
-			$this->content                 = $content;
-			$this->id                  = (int) $id;
-			$this->tag = $tag;
+			$this->type                           = $type;
+			$this->validate                       = true;
+			$this->content                        = $content;
+			$this->id                             = (int) $id;
+			$this->tag                            = $tag;
 		} else {
 			$this->validate = false;
 		}
@@ -55,7 +55,7 @@ class Anigrab {
 		$this->collection = $anime;
 	} // end start_grab()
 
-	private function ani_dump():String {
+	private function ani_dump():string {
 		$info = $this->collection;
 		unset( $info['image_url'] );
 		$ret  = "<img src=\"{$this->img}\" alt=\"poster\"/> <br> \n";
@@ -67,8 +67,8 @@ class Anigrab {
 		return $ret;
 	} // end ani_dump();
 
-	public function render():String {
-		if ( 'dump' == trim($this->content) ) {
+	public function render():string {
+		if ( 'dump' == trim( $this->content ) ) {
 			$out = $this->ani_dump();
 			return $out;
 		} else {

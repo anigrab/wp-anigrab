@@ -9,7 +9,7 @@ namespace Grei;
 use Exception;
 class Wp_Anigrab {
 
-	final public static function ani_render( Array $data, Array $postarr ):Array {
+	final public static function ani_render( array $data, array $postarr ):array {
 		$post    = $data['post_content'];
 		$anigrab = new Anigrab( $post );
 		if ( $anigrab->validate ) {
