@@ -11,12 +11,12 @@ use Mustache_Engine;
 class Anigrab {
 
 	private $id;
-	private $tag;
 	private $img;
 	private $content;
 	private $type;
 	public $collection;
 	public $validate;
+	public $tag;
 
 	public function __construct( String $data ) {
 		if ( preg_match( '`\[(anigrab|mangrab)=(\d+)\]((.|\n)*)\[/\1\]`', $data, $matches ) ) {
@@ -25,6 +25,7 @@ class Anigrab {
 			$this->validate = true;
 			$this->content                 = $content;
 			$this->id                  = (int) $id;
+			$this->tag = $tag;
 		} else {
 			$this->validate = false;
 		}
