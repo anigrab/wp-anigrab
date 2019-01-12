@@ -1,5 +1,10 @@
 <?php
 declare(strict_types=1);
+/**
+ * Class Grei\Wp_Anigrab
+ *
+ * @package Wp_Anigrab
+ */
 namespace Grei;
 use Exception;
 class Wp_Anigrab {
@@ -8,7 +13,7 @@ class Wp_Anigrab {
 		$post    = $data['post_content'];
 		$anigrab = new Anigrab( $post );
 		if ( $anigrab->validate ) {
-			preg_match( '`\[(anigrab|mangrab)=(.*?)\](.+?)\[/\1\]`', $post, $tgs );
+			preg_match( '`\[(anigrab|mangrab)=(.*?)\](?s:.+)\[/\1\]`', $post, $tgs );
 			$replace  = "<!--powered by anigrab (https://ipynb.wordpress.com)--> \n";
 			$replace .= "<!--{$tgs[0]}--> \n";
 			try {
@@ -19,7 +24,7 @@ class Wp_Anigrab {
 				$err      = strtoupper( $e->getMessage() );
 				$replace .= "===== ERROR RENDERING! ===== \n\n $err \n\n===== powered by anigrab =====";
 			}
-			$replaced             = preg_replace( '`\[(anigrab|mangrab)=(.*?)\](.+?)\[/\1\]`', $replace, $post );
+			$replaced             = preg_replace( '`\[(anigrab|mangrab)=(.*?)\](?s:.+)\[/\1\]`', $replace, $post );
 			$data['post_content'] = $replaced;
 		}
 		return $data;
@@ -28,3 +33,4 @@ class Wp_Anigrab {
 		add_filter( 'wp_insert_post_data', '\Grei\Wp_Anigrab::ani_render', '99', 2 );
 	}
 }
+

@@ -1,5 +1,10 @@
 <?php
 declare(strict_types=1);
+/**
+ * Class Grei\Anigrab
+ *
+ * @package Wp_Anigrab
+ */
 namespace Grei;
 use Jikan\Jikan;
 use Mustache_Engine;
@@ -7,7 +12,6 @@ class Anigrab {
 
 	private $id;
 	private $tag;
-	private $data;
 	private $img;
 	private $content;
 	private $type;
@@ -15,15 +19,12 @@ class Anigrab {
 	public $validate;
 
 	public function __construct( String $data ) {
-		if ( preg_match( '`\[(anigrab)=(.*?)\](.+?)\[/\1\]`', $data ) ) {
-			$this->data     = $data;
-			$this->type     = 'anime';
+		if ( preg_match( '`\[(anigrab|mangrab)=(\d+)\]((.|\n)*)\[/\1\]`', $data, $matches ) ) {
+			list($tag, $type, $id, $content, $ig) = $matches;
+			$this->type     = $type;
 			$this->validate = true;
-
-		} elseif ( preg_match( '`\[(mangrab)=(.*?)\](.+?)\[/\1\]`', $data ) ) {
-			$this->data     = $data;
-			$this->type     = 'manga';
-			$this->validate = true;
+			$this->content                 = $content;
+			$this->id                  = (int) $id;
 		} else {
 			$this->validate = false;
 		}
@@ -31,10 +32,9 @@ class Anigrab {
 	} // end __construct()
 
 	public function start_grab() {
-		$this->ani_bb();
 		$id    = $this->id;
 		$jikan = new Jikan;
-		if ( 'anime' === $this->type ) {
+		if ( 'anigrab' === $this->type ) {
 			$anime = $jikan->Anime( $id )->response;
 			foreach ( $anime as $key => $value ) {
 				if ( is_array( $value ) ) {
@@ -54,14 +54,6 @@ class Anigrab {
 		$this->collection = $anime;
 	} // end start_grab()
 
-	private function ani_bb() {
-		preg_match( '`\[(anigrab|mangrab)=(.*?)\](.+?)\[/\1\]`', $this->data, $matches );
-		list($tag, $param, $innertext) = array( $matches[1], $matches[2], $matches[3] );
-		$this->content                 = $innertext;
-			$this->id                  = (int) $param;
-			$this->tag                 = $tag;
-	} // end ani_bb()
-
 	private function ani_dump():String {
 		$info = $this->collection;
 		unset( $info['image_url'] );
@@ -75,7 +67,7 @@ class Anigrab {
 	} // end ani_dump();
 
 	public function render():String {
-		if ( 'dump' == $this->content ) {
+		if ( 'dump' == trim($this->content) ) {
 			$out = $this->ani_dump();
 			return $out;
 		} else {
