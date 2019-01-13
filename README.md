@@ -17,8 +17,9 @@ $ cd path-to-wp-plugins/wp-anigrab && composer dump-autoload -o
 $ wp plugin activate wp-anigrab
 
 ```
-or download installable.zip from [release](https://github.com/anigrab/wp-anigrab/releases)
+or download installable.zip from [release](https://github.com/anigrab/wp-anigrab/releases).
 
+now this plugins also available in wordpress plugins directory [wp-anigrab](https://wordpress.org/plugins/wp-anigrab/).
 
 ### Usage
 

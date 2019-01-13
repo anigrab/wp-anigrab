@@ -2,7 +2,7 @@
     "name": "grei/wp-anigrab",
     "description": "grab anime info and save to local wordpress post",
     "type": "project",
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "grei",
