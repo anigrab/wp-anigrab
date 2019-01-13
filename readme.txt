@@ -6,8 +6,8 @@ Requires at least: 4.9.0
 Tested up to: 5.0.3
 Requires PHP: 7.0
 Stable tag: trunk
-License: MIT
-License URI: http://opensource.org/licenses/MIT
+License: GPL-3.0
+License URI: http://opensource.org/licenses/GPL-3.0
 
 grab anime or manga info and save to local wordpress post
 

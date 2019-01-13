@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Version: 2.0.0
  * Author: grei
  * Author URI: https://ipynb.wordpress.com
- * License: MIT
+ * License: GPL-3.0
  */
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 require __DIR__ . '/vendor/autoload.php';
